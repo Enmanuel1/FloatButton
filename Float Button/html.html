@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="css.css">
+  <link rel="stylesheet" href="Materialize.css">
+</head>
+
+<body>
+  <div class="contenedorindividual" id="contenedor-modal">
+
+    <dialog id="note-dialog">
+        <div class="dialog-header">
+            <img src="images/close.png" class="close-modal">
+        </div>
+        <div class="contenedor-contenido-dialog">
+            <div class="contenido-dialog">
+                <div class="contenedor-dialog-agregar" id="agregar-nota-dialog">
+                    <img src="images/new.png">
+                    <p>Agregar</p>
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+
+    <dialog id="book-dialog">
+        <div class="dialog-header">
+            <img src="images/close.png" class="close-modal">
+        </div>
+        <div class="contenedor-contenido-dialog">
+            <div class="contenido-dialog">
+                <div class="contenedor-dialog-agregar" id="agregar-book-dialog">
+                    <img src="images/new.png">
+                    <p>Agregar</p>
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog id="teachers-dialog">
+        <div class="dialog-header">
+            <img src="images/close.png" class="close-modal">
+        </div>
+        <div class="contenedor-contenido-dialog">
+            <div class="contenido-dialog">
+                <div class="contenedor-dialog-agregar" id="agregar-profesor-dialog">
+                    <img src="images/new.png">
+                    <p>Agregar</p>
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog id="grades-dialog">
+        <div class="dialog-header">
+            <img src="images/close.png" class="close-modal">
+        </div>
+        <div class="contenedor-contenido-dialog">
+            <div class="contenido-dialog">
+                <div class="contenedor-dialog-agregar" id="agregar-calificacion-dialog">
+                    <img src="images/new.png">
+                    <p>Agregar</p>
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog id="timetable-dialog">
+        <div class="dialog-header">
+            <img src="images/close.png" class="close-modal">
+        </div>
+        <div class="contenedor-contenido-dialog">
+            <div class="contenido-dialog">
+                <div class="contenedor-dialog-agregar" id="agregar-horario-dialog">
+                    <img src="images/new.png">
+                    <p>Agregar</p>
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+
+    <!--Modales para agregar datos-->
+
+    <dialog class="dialog-formulario" id="agregar-nota">
+        <div class="dialog-header">
+            <img src="images/close.png" class="close-modal">
+        </div>
+        <div class="contenedor-contenido-dialog contenedor-contenido-dialog-formularios">
+            <div class="contenedor-formulario">
+                <div class="wrap">
+                    <form asp-action="InsertNote" asp-controller="Home" method="post" class="formulario" name="formulario_agregar">
+                        <div>
+                            <div class="input-group">
+                                <input type="text" asp-for="note.Title" id="anotacion">
+                                <label for="anotacion" asp-for="note.Title" class="label">Titulo de la anotacion</label>
+                            </div>
+                            <div class="input-group">
+                                <div class="grupo" id="grupo">
+                                    <div class="columna1" id="columna">
+                                        <input asp-for="note.Subject" type="text" class="materias"  id="materias">
+                                        <label asp-for="note.Subject"  class="label">Materia</label>
+                                    </div>
+
+                                    <div class="columna2">
+                                        <input asp-for="note.Date" type="text" class="datepicker" id="datepicker">
+                                        <label asp-for="note.Date"  class="label">fecha de entrega</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input-group">
+
+                                <textarea asp-for="note.Anotation" id=""></textarea>
+                                <label asp-for="note.Anotation"  class="label">Anotacion</label>
+                            </div>
+                            <div class="input-group">
+                                <div class="grupo" id="grupo">
+                                    <div class="columna1" id="columna">
+                                        <input asp-for="note.Project" type="text" class="proyectos" id="proyectos">
+                                        <label asp-for="note.Project" class="label">proyecto de la anotacion</label>
+                                    </div>
+
+                                    <div class="columna2">
+                                        <select asp-for="note.Priority" class="selects">
+                                            <option></option>
+                                            <option>Prioridad 1</option>
+                                            <option>Prioridad 2</option>
+                                        </select>
+                                        <label asp-for="note.Priority" class="label">Prioridad</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="submit" id="btn-submit" value="Guardar">
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog class="dialog-formulario" id="agregar-book">
+        <div class="dialog-header">
+            <img src="images/close.png" class="close-modal">
+        </div>
+        <div class="contenedor-contenido-dialog contenedor-contenido-dialog-formularios">
+            <div class="contenedor-formulario">
+                <div class="wrap">
+                    <form asp-action="InsertSubject" asp-controller="Home" method="post" class="formulario" name="formulario_agregar">
+                        <div>
+                            <div class="input-group">
+                                <input asp-for="subject.Name" type="text" id="materia">
+                                <label asp-for="subject.Name" class="label">Nombre de la materia</label>
+                            </div>
+                            <div class="input-group">
+                                <input asp-for="subject.ClassRoom" type="text" id="materia">
+                                <label asp-for="subject.ClassRoom" class="label">Aula de la materia</label>
+                            </div>
+                            <div class="input-group">
+                                <input asp-for="subject.Grades" type="text" id="materia">
+                                <label asp-for="subject.Grades" class="label">Calificacion de la materia</label>
+                            </div>
+
+                            <input type="submit" id="btn-submit" value="Guardar">
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+
+        </div>
+    </dialog>
+
+    <dialog class="dialog-formulario" id="agregar-teacher">
+        <div class="dialog-header">
+            <img src="images/close.png" class="close-modal">
+        </div>
+        <div class="contenedor-contenido-dialog contenedor-contenido-dialog-formularios">
+            <div class="contenedor-formulario">
+                <div class="wrap">
+                    <form asp-action="InsertTeacher" asp-controller="Home" method="post" class="formulario" name="formulario_agregar">
+                        <div>
+                            <div class="input-group">
+                                <input type="text" asp-for="teacher.Name" >
+                                <label asp-for="teacher.Name" class="label">Nombre del profesor</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" asp-for="teacher.Phone">
+                                <label asp-for="teacher.Phone" class="label">Telefono del profesor</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" asp-for="teacher.Mail">
+                                <label asp-for="teacher.Mail" class="label">Correo del profesor</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" asp-for="teacher.Subject">
+                                <label asp-for="teacher.Subject" class="label">Materia</label>
+                            </div>
+                            <input type="submit" id="btn-submit" value="Guardar">
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </dialog>
+
+    <dialog class="dialog-formulario" id="agregar-grades">
+        <div class="dialog-header">
+            <img src="images/close.png" class="close-modal">
+        </div>
+        <div class="contenedor-contenido-dialog contenedor-contenido-dialog-formularios">
+            <div class="contenedor-formulario">
+                <div class="wrap">
+                    <form action="" method="post" class="formulario" name="formulario_agregar">
+                        <div>
+                            <div class="input-group">
+                                <div class="grupo" id="grupo">
+                                    <div class="columna1" id="columna">
+                                        <select name="tituloAnterior" id="materias">
+                                            <option value=""></option>
+                                            <option value=""></option>
+                                            <option></option>
+                                        </select>
+                                        <label for="materias" class="label">Titulo de anotacion viejo</label>
+                                    </div>
+
+                                    <div class="columna2">
+                                        <input type="text" name="anotacion" id="anotacion">
+                                        <label for="anotacion" class="label">Titulo de la anotacion</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <div class="grupo" id="grupo">
+                                    <div class="columna1" id="columna">
+                                        <select name="materias" class="materias" id="materias">
+                                            <option value=""></option>
+                                            <option value="calculo">Calculo</option>
+                                            <option>puerca</option>
+                                        </select>
+                                        <label for="materias" class="label">Materia</label>
+                                    </div>
+
+                                    <div class="columna2">
+                                        <input type="text" class="datepicker" name="datepicker" id="datepicker">
+                                        <label for="datepicker" class="label">fecha de entrega</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input-group">
+
+                                <textarea name="textarea" id=""></textarea>
+                                <label for="textarea" class="label">Anotacion</label>
+                            </div>
+                            <div class="input-group">
+                                <div class="grupo" id="grupo">
+                                    <div class="columna1" id="columna">
+                                        <select name="proyectos" class="selects">
+                                            <option></option>
+                                            <option></option>
+                                        </select>
+                                        <label for="proyectos" class="label">proyecto de la anotacion</label>
+                                    </div>
+
+                                    <div class="columna2">
+                                        <select name="proyectos" class="selects">
+                                            <option></option>
+                                            <option>Prioridad 1</option>
+                                            <option>Prioridad 2</option>
+                                        </select>
+                                        <label for="datepicker" class="label">Prioridad</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="submit" id="btn-submit" value="Guardar">
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </dialog>
+
+    <dialog class="dialog-formulario" id="agregar-timetables">
+        <div class="dialog-header">
+            <img src="images/close.png" class="close-modal">
+        </div>
+        <div class="contenedor-contenido-dialog contenedor-contenido-dialog-formularios">
+            <div class="contenedor-formulario">
+                <div class="wrap">
+                    <form asp-action="InsertTimeTable" asp-controller="Home" method="post" class="formulario">
+                        <div>
+                            <div class="input-group">
+                                <input asp-for="timeTable.Subject" type="text" id="anotacion">
+                                <label asp-for="timeTable.Subject" class="label">Materia</label>
+                            </div>
+                            <div class="input-group">
+                                <input asp-for="timeTable.ClassRoom" type="text" id="anotacion">
+                                <label asp-for="timeTable.ClassRoom" class="label">Aula</label>
+                            </div>
+                            <div class="input-group">
+                                <input asp-for="timeTable.DayOfTheWeek" type="text" class="datepicker" id="datepicker">
+                                <label asp-for="timeTable.DayOfTheWeek" class="label">Dia de clases</label>
+                            </div>
+                            <input type="submit" id="btn-submit" value="Guardar">
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </dialog>
+
+    <div class="global-container">
+        <nav class="menu">
+            <div class="contenedor-menu">
+                <div class="datos-menu">
+                    <div class="estado estado-datos">
+                        <img src="images/user.png" class="datos-menu-img">
+                        <span>Enmanuel Avilez</span>
+                        <a class="datos-menu-img "><img src="images/exit.png" ></a>
+                        <img src="images/search.png" class="datos-menu-img search-img">
+
+                    </div>
+                </div>
+                <div class="enlaces-menu">
+                    <div class="enlaces">
+                        <div class="estado estado-iconos">
+                            <img src="images/overview.png" class="icon-menu">
+                            <a asp-controller="Home" asp-action="Index">Resumen</a>
+                        </div>
+                    </div>
+                    <div class="enlaces">
+                        <div class="estado">
+                            <img src="images/note.png" class="icon-menu">
+                            <a asp-controller="Home" asp-action="Agenda">Agenda</a>
+                        </div>
+                    </div>
+                    <div class="contenedor-tabs">
+                        <ul class="tabs" id="tabs">
+                            <li class="tabs-item tabactive">Proyectos</li>
+                            <li class="tabs-item">Filtros</li>
+                        </ul>
+                        <div class="paneles">
+                            <div class="paneles-item panelactive">
+                                <div class="contenedor-opcion">
+                                    <div class="imagen-opcion">
+                                        <img src="images/add.png" width="25px">
+
+                                    </div>
+                                    <div class="texto-opcion">
+                                        <p class="añadir-proyectos">Añadir un Proyecto</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="paneles-item">
+                                <div class="contenedor-opcion">
+                                    <div class="texto-opcion">
+                                        <p class="p-prioridad">Prioridad 1</p>
+                                        <p class="p-prioridad">Prioridad 2</p>
+                                        <p class="p-prioridad">No prioridad</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="enlaces">
+                        <div class="estado">
+                            <img src="images/book.png" class="icon-menu">
+                            <a asp-controller="Home" asp-action="Subject">Asignaturas</a>
+                        </div>
+                    </div>
+                    <div class="enlaces">
+                        <div class="estado">
+                            <img src="images/teachers.png" class="icon-menu">
+                            <a asp-controller="Home" asp-action="Teacher">Profesores</a>
+                        </div>
+                    </div>
+                    <div class="enlaces">
+                        <div class="estado">
+                            <img src="images/grades.png" class="icon-menu">
+                            <a asp-controller="Home" asp-action="Grades">Calificaciones</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+
+        <div class="contenedor-contenido-enlaces">
+
+
+        </div>
+        <!-- float button -->
+        <div id="main-round-button">
+
+        </div>
+
+        <div id="c1">
+            <img src="images/teachers.png" id="teachers">
+        </div>
+        <div id="c2">
+            <img src="images/book.png" id="book">
+        </div>
+        <div id="c3">
+            <img src="images/note.png" id="note">
+        </div>
+        <div id="c4">
+            <img src="images/timetable.png" id="timetable">
+        </div>
+        <div id="c5">
+            <img src="images/grades.png" id="grades">
+        </div>
+    </div>
+</div>
+<script src="jquery.js" charset="utf-8"></script>
+<script src="material.js"></script>
+<script src="js.js"></script>
+</body>
+</html>
